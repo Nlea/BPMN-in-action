@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Insurance" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="87b3dba" camunda:diagramRelationId="ffd1437b-714d-4508-a263-480ff9741af1" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <decision id="CheckCause" name="Check cause">
+    <informationRequirement id="InformationRequirement_0tp3nby">
+      <requiredDecision href="#planCovered" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0uoaa3h">
+      <requiredDecision href="#cost" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1v6czgm">
+      <requiredInput href="#InputData_03p8u6j" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0s4jv3w">
+      <requiredInput href="#InputData_1j87egr" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1o0ssl9" hitPolicy="FIRST">
+      <input id="Input_1" label="Plan cover">
+        <inputExpression id="InputExpression_1" typeRef="boolean">
+          <text>planCovered</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_00ljk6o" label="Cost">
+        <inputExpression id="LiteralExpression_0o8h89p" typeRef="number">
+          <text>cost</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0mgqyjv" label="Objetc">
+        <inputExpression id="LiteralExpression_1da300g" typeRef="string">
+          <text>object</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1kbl4vt" label="Relation to damaged person">
+        <inputExpression id="LiteralExpression_1j8id44" typeRef="string">
+          <text>relation</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Cause covered" name="causeCovered" typeRef="string">
+        <outputValues id="UnaryTests_0kgoxi6">
+          <text>"yes","maybe","no"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1fvpm5w">
+        <inputEntry id="UnaryTests_0tqlam5">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gllibi">
+          <text>&lt; 100</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j113me">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e1xmn5">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zrnc97">
+          <text>"yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vmi0cy">
+        <inputEntry id="UnaryTests_0pn1it9">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ip045s">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_19kvfuk">
+          <text>"smart phone"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vj3xb3">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12ij8oh">
+          <text>"maybe"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fgd1b6">
+        <inputEntry id="UnaryTests_0ipciz3">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mxv0lx">
+          <text>&gt;= 1500</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v98na7">
+          <text>"bike"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06j132o">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jm2w39">
+          <text>"maybe"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sc637x">
+        <inputEntry id="UnaryTests_1u4jw6w">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l3reov">
+          <text>&gt;= 1000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j8og2i">
+          <text>"tv", "laptop"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uetlln">
+          <text>"family", "friends"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bday5p">
+          <text>"maybe"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vdzsxr">
+        <inputEntry id="UnaryTests_0hl0l5z">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01ipzlk">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_106qf2o">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tgd7fo">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fo21vn">
+          <text>"no"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fycfva">
+        <inputEntry id="UnaryTests_1cicj1d">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qfa0as">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oy4n2k">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ztpmov">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rwe1ce">
+          <text>"yes"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="planCovered" name="Check insurance plan">
+    <informationRequirement id="InformationRequirement_0ml28po">
+      <requiredInput href="#InputData_0cbqv7j" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0sz5xgl" hitPolicy="FIRST">
+      <input id="InputClause_0643x6o" label="Cause">
+        <inputExpression id="LiteralExpression_0kv44b4" typeRef="string">
+          <text>cause</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1mezhij">
+          <text>"car","animal","building","bulgary"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_0hdzres" label="Plan cover" name="planCover" typeRef="boolean" />
+      <rule id="DecisionRule_1hm3s3j">
+        <inputEntry id="UnaryTests_1wfm1hu">
+          <text>"car","animal","building","bulgary"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qw35tf">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ufxd7a">
+        <inputEntry id="UnaryTests_1ol971i">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13m6qqs">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="cost" name="Calculate cost">
+    <informationRequirement id="InformationRequirement_1jjayiy">
+      <requiredInput href="#InputData_1lwsu7e" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_080jadn">
+      <requiredInput href="#InputData_1h5w4xv" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0kgea6d">
+      <requiredInput href="#InputData_094oh2y" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0ssbzbv">
+      <requiredInput href="#InputData_0zlgn7u" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1nztf4i">
+      <input id="InputClause_0illuv6" label="Type of Damage">
+        <inputExpression id="LiteralExpression_1ti28ik" typeRef="string">
+          <text>type</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1juntov">
+          <text>"total","damage","person damage"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0fkcvqi" label="Value when new">
+        <inputExpression id="LiteralExpression_0zodfnu" typeRef="number">
+          <text>value</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0kzi2to" label="Age of object">
+        <inputExpression id="LiteralExpression_1qxf8kg" typeRef="number">
+          <text>objectAge</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ut6s5i" label="Estimated repair">
+        <inputExpression id="LiteralExpression_1vjkmi6" typeRef="number">
+          <text>repair</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0sgevp2" label="Cost" name="cost" typeRef="number" />
+      <rule id="DecisionRule_0wjgd10">
+        <inputEntry id="UnaryTests_1tgry5t">
+          <text>"total"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n8dji3">
+          <text>value</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10o0v73">
+          <text>objectAge</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rtrsvj">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03pdb45">
+          <text>value - (value * 0.05) * objectAge</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hg2hrv">
+        <inputEntry id="UnaryTests_0ovthjt">
+          <text>"damage"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q7rudj">
+          <text>value</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o47gem">
+          <text>objectAge</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oilh14">
+          <text>repair</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g8qura">
+          <text>repair</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06e20kl">
+        <inputEntry id="UnaryTests_14zb51h">
+          <text>"person damage"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cfeatk">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ik9dsq">
+          <text />
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ot7ac5">
+          <text />
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09pe68i">
+          <text>5000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0cbqv7j" name="cause" />
+  <inputData id="InputData_1lwsu7e" name="value when new" />
+  <inputData id="InputData_1h5w4xv" name="age of object" />
+  <inputData id="InputData_094oh2y" name="estimate repair cost" />
+  <inputData id="InputData_03p8u6j" name="Object" />
+  <inputData id="InputData_1j87egr" name="Relation to damaged Person" />
+  <inputData id="InputData_0zlgn7u" name="type" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="CheckCause">
+        <dc:Bounds height="80" width="180" x="340" y="60" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1rsi9r8" dmnElementRef="planCovered">
+        <dc:Bounds height="80" width="180" x="240" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1ei0rcj" dmnElementRef="InformationRequirement_0tp3nby">
+        <di:waypoint x="330" y="240" />
+        <di:waypoint x="376" y="160" />
+        <di:waypoint x="376" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0qndijj" dmnElementRef="cost">
+        <dc:Bounds height="80" width="180" x="450" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18586fh" dmnElementRef="InformationRequirement_0uoaa3h">
+        <di:waypoint x="540" y="240" />
+        <di:waypoint x="412" y="160" />
+        <di:waypoint x="412" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1x6d487" dmnElementRef="InputData_0cbqv7j">
+        <dc:Bounds height="45" width="125" x="158" y="378" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1tr5nl3" dmnElementRef="InformationRequirement_0ml28po">
+        <di:waypoint x="221" y="378" />
+        <di:waypoint x="330" y="340" />
+        <di:waypoint x="330" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0tlwz0s" dmnElementRef="InputData_1lwsu7e">
+        <dc:Bounds height="45" width="125" x="432" y="398" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_16iupn2" dmnElementRef="InformationRequirement_1jjayiy">
+        <di:waypoint x="495" y="398" />
+        <di:waypoint x="486" y="340" />
+        <di:waypoint x="486" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_09m25x1" dmnElementRef="InputData_1h5w4xv">
+        <dc:Bounds height="45" width="125" x="567" y="398" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1kf4bzs" dmnElementRef="InformationRequirement_080jadn">
+        <di:waypoint x="630" y="398" />
+        <di:waypoint x="522" y="340" />
+        <di:waypoint x="522" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0ligz0y" dmnElementRef="InputData_094oh2y">
+        <dc:Bounds height="45" width="125" x="707" y="399" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0apl993" dmnElementRef="InformationRequirement_0kgea6d">
+        <di:waypoint x="770" y="399" />
+        <di:waypoint x="558" y="340" />
+        <di:waypoint x="558" y="320" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0vxb39s" dmnElementRef="InputData_03p8u6j">
+        <dc:Bounds height="45" width="125" x="648" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_12rkdyf" dmnElementRef="InformationRequirement_1v6czgm">
+        <di:waypoint x="711" y="248" />
+        <di:waypoint x="448" y="160" />
+        <di:waypoint x="448" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0c6qjn7" dmnElementRef="InputData_1j87egr">
+        <dc:Bounds height="45" width="125" x="798" y="249" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0sua7w9" dmnElementRef="InformationRequirement_0s4jv3w">
+        <di:waypoint x="861" y="249" />
+        <di:waypoint x="484" y="160" />
+        <di:waypoint x="484" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0aclhun" dmnElementRef="InputData_0zlgn7u">
+        <dc:Bounds height="45" width="125" x="847" y="398" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_19wv6xe" dmnElementRef="InformationRequirement_0ssbzbv">
+        <di:waypoint x="910" y="398" />
+        <di:waypoint x="594" y="340" />
+        <di:waypoint x="594" y="320" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
